@@ -103,7 +103,6 @@ class TitleSprite extends Sprite {
  //% groups='["Menu", "Game"]'
  //% weight=100 color=#000000 icon="\uf1ec"
 
-let title: string
 let checkpointX: number
 let checkpointY: number
 let myTitle: Sprite
@@ -140,17 +139,17 @@ namespace Ercade {
 
 
 
-    //% block="text sprite $text || as $fg on $bg"
-    //% blockId="titlesprite_create"
-    //% blockSetVariable="textSprite"
-    //% expandableArgumentMode="toggle"
-    //% bg.defl=0
-    //% bg.shadow="colorindexpicker"
-    //% fg.defl=1
-    //% fg.shadow="colorindexpicker"
-    //% group="Menu"
-    //% weight=100
-    export function create(
+    //\% block="text sprite $text || as $fg on $bg"
+    //\% blockId="titlesprite_create"
+    //\% blockSetVariable="textSprite"
+    //\% expandableArgumentMode="toggle"
+    //\% bg.defl=0
+    //\% bg.shadow="colorindexpicker"
+    //\% fg.defl=1
+    //\% fg.shadow="colorindexpicker"
+    //\% group="Menu"
+    //\% weight=100
+    function create(
         text: string,
         bg: number = 0,
         fg: number = 1,
@@ -197,7 +196,8 @@ namespace Ercade {
     //% group="Menu"
     //% color=#000000
     export function Set_Title_To_(title: string){
-    title = title
+        //title = title
+        create(title)
     }
     //% blockId=menu block="Menu $onoff=toggleOnOff"
     //% weight=400 blockGap=8
