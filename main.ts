@@ -1,3 +1,9 @@
+namespace SpriteKind {
+    //% isKind
+    export const SpriteText = SpriteKind.create();
+}
+
+
  //% blockId=ercade block="Ercade Extension"
  //% color="#000000" 
  //% groups='["Menu", "Game"]'
@@ -9,7 +15,7 @@ let myTitle: Sprite
  namespace Ercade { 
 
     
-    //% blockId=setTitle block="Set Title To $title=screen_image_picker"
+    //% blockId=setTitle block="Set Title To %title"
     //% weight=400 blockGap=8
     //% group="Menu"
     //% color=#000000
@@ -22,24 +28,7 @@ let myTitle: Sprite
     //% color=#000000
     export function Menu_(onoff: boolean){
     if (onoff = true){
-    let myTitle = sprites.create(img`
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-    `)
+
 
 
     }
