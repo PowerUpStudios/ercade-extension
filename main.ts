@@ -29,7 +29,7 @@ class TitleSprite extends Sprite {
         const borderAndPadding = this.borderWidth + this.padding + this.outlineWidth;
         const iconWidth = this.icon ? this.icon.width + this.padding + this.outlineWidth : 0;
         const iconHeight = this.icon ? this.icon.height : 0;
-        const font = titlesprite.getFontForTextAndHeight(this.text, this.maxFontHeight);        
+        const font = Ercade.getFontForTextAndHeight(this.text, this.maxFontHeight);        
         const width = iconWidth + font.charWidth * this.text.length + 2 * borderAndPadding;
         const height = Math.max(iconHeight, font.charHeight) + 2 * borderAndPadding;
         const img = image.create(width, height);
@@ -37,12 +37,12 @@ class TitleSprite extends Sprite {
         img.fillRect(this.borderWidth, this.borderWidth, width - this.borderWidth * 2, height - this.borderWidth * 2, this.bg)
         if (this.icon) {
             const iconHeightOffset = (height - iconHeight) / 2
-            titlesprite.renderScaledImage(this.icon, img, borderAndPadding, iconHeightOffset)
+            Ercade.renderScaledImage(this.icon, img, borderAndPadding, iconHeightOffset)
         }
         const textHeightOffset = (height - font.charHeight) / 2
         img.print(this.text, iconWidth + borderAndPadding, textHeightOffset, this.fg, font);
         if (this.outlineWidth > 0)
-            titlesprite.outlineOtherColor(img, this.fg, this.outlineWidth, this.outlineColor)
+            Ercade.outlineOtherColor(img, this.fg, this.outlineWidth, this.outlineColor)
         this.setImage(img)        
     }
 
@@ -103,7 +103,14 @@ class TitleSprite extends Sprite {
  //% groups='["Menu", "Game"]'
  //% weight=100 color=#000000 icon="\uf1ec"
 
-namespace titlesprite {
+let title: string
+let checkpointX: number
+let checkpointY: number
+let myTitle: Sprite
+
+
+
+namespace Ercade {
 
     // TODO: downscale and upscale icons?
     export function renderScaledImage(source: Image, destination: Image, x: number, y: number, downScalePowerOfTwo: number = 0) {
@@ -182,16 +189,7 @@ namespace titlesprite {
             img.setPixel(x, y, outlineColor)
         }
     }
-}
 
-
-
-
-let title: string
-let checkpointX: number
-let checkpointY: number
-let myTitle: Sprite
- namespace Ercade { 
 
     
     //% blockId=setTitle block="Set Title To %title"
