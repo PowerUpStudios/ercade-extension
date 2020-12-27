@@ -1,3 +1,4 @@
+ //% blockId=ercade block="Ercade Extension"
  //% color="#000000" 
  //% groups='["Menu", "Game"]'
  //% weight=100 color=#000000 icon="\uf1ec"
