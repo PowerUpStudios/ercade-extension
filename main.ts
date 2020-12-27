@@ -97,10 +97,12 @@ class TitleSprite extends Sprite {
 }
 
 
-//% color=#3e99de
-//% icon="\uf031"
-//% blockGap=8 block="Title Sprite"
-//% groups='["Create", "Modify"]'
+
+ //% blockId=ercade block="Ercade Extension"
+ //% color="#000000" 
+ //% groups='["Menu", "Game"]'
+ //% weight=100 color=#000000 icon="\uf1ec"
+
 namespace titlesprite {
 
     // TODO: downscale and upscale icons?
@@ -128,6 +130,9 @@ namespace titlesprite {
         return image.scaledFont(font, maxHeight / font.charHeight)
     }
 
+
+
+
     //% block="text sprite $text || as $fg on $bg"
     //% blockId="titlesprite_create"
     //% blockSetVariable="textSprite"
@@ -136,7 +141,7 @@ namespace titlesprite {
     //% bg.shadow="colorindexpicker"
     //% fg.defl=1
     //% fg.shadow="colorindexpicker"
-    //% group="Create"
+    //% group="Menu"
     //% weight=100
     export function create(
         text: string,
@@ -181,10 +186,7 @@ namespace titlesprite {
 
 
 
- //% blockId=ercade block="Ercade Extension"
- //% color="#000000" 
- //% groups='["Menu", "Game"]'
- //% weight=100 color=#000000 icon="\uf1ec"
+
 let title: string
 let checkpointX: number
 let checkpointY: number
