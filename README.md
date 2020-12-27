@@ -1,8 +1,4 @@
  
-
-
-> Open this page at [https://powerupstudios.github.io/ercade-extension/](https://powerupstudios.github.io/ercade-extension/)
-
 ## Use as Extension
 
 This repository can be added as an **extension** in MakeCode.

@@ -1,5 +1,5 @@
 {
-    "name": "Extension Test",
+    "name": "Ercade Extension",
     "description": "",
     "dependencies": {
         "device": "*"

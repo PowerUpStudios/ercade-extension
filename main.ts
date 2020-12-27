@@ -4,8 +4,11 @@
 let title: string
 let checkpointX: number
 let checkpointY: number
+let myTitle: Sprite
  namespace Ercade { 
-    //% blockId=setTitle block="Set Title To %title"
+
+    
+    //% blockId=setTitle block="Set Title To $title=screen_image_picker"
     //% weight=400 blockGap=8
     //% group="Menu"
     //% color=#000000
@@ -18,12 +21,29 @@ let checkpointY: number
     //% color=#000000
     export function Menu_(onoff: boolean){
     if (onoff = true){
-
+    let myTitle = sprites.create(img`
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+    `)
 
 
     }
     else{
-
+    myTitle.destroy()
 
 
     }
@@ -48,4 +68,10 @@ sprite.setPosition(checkpointX, checkpointY)
 
 
 }
+
+    
+
+
  } 
+
+
