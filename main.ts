@@ -99,7 +99,7 @@ class TitleSprite extends Sprite {
 
 //% color=#3e99de
 //% icon="\uf031"
-//% blockGap=8 block="Text Sprite"
+//% blockGap=8 block="Title Sprite"
 //% groups='["Create", "Modify"]'
 namespace titlesprite {
 
