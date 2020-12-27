@@ -47,7 +47,7 @@ class TitleSprite extends Sprite {
     }
 
     //% block="set $this(textSprite) max font height $height"
-    //% group="Modify"
+    //% group="Menu"
     //% weight=50
     public setMaxFontHeight(height: number) {
         this.maxFontHeight = height
@@ -55,7 +55,7 @@ class TitleSprite extends Sprite {
     }
 
     //% block="set $this(textSprite) icon $icon=screen_image_picker"
-    //% group="Modify"
+    //% group="Menu"
     //% weight=46
     public setIcon(icon: Image) {
         this.icon = icon
@@ -63,7 +63,7 @@ class TitleSprite extends Sprite {
     }
 
     //% block="set $this(textSprite) text $text"
-    //% group="Modify"
+    //% group="Menu"
     //% weight=47
     public setText(text: string) {
         this.text = text || ""
@@ -74,7 +74,7 @@ class TitleSprite extends Sprite {
     //% width.defl=1
     //% color.defl=6
     //% color.shadow="colorindexpicker"
-    //% group="Modify"
+    //% group="Menu"
     //% weight=48
     public setBorder(width: number, color: number, padding: number = 0) {
         this.borderWidth = Math.max(width, 0);
@@ -87,7 +87,7 @@ class TitleSprite extends Sprite {
     //% width.defl=1
     //% color.defl=6
     //% color.shadow="colorindexpicker"
-    //% group="Modify"
+    //% group="Menu"
     //% weight=49
     public setOutline(width: number, color: number) {
         this.outlineWidth = Math.max(width, 0);
