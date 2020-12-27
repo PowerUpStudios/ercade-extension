@@ -4,7 +4,7 @@ namespace SpriteKind {
 }
 
 
-//% blockNamespace="titlesprite"
+//% blockNamespace="Ercade"
 //% blockGap=8
 class TitleSprite extends Sprite {
     constructor(
