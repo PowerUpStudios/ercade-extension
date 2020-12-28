@@ -33,7 +33,6 @@ class TitleSprite extends Sprite {
         this.setKind(SpriteKind.SpriteText);
         this.setFlag(SpriteFlag.Ghost, true);
 
-        //super(this.setPosition(positionX, positionY));
         this.update()
     }
 
@@ -59,36 +58,25 @@ class TitleSprite extends Sprite {
                
     }
 
-    //\% block="set $this(textSprite) max font height $height"
-    //\% group="Menu"
-    //\% weight=50
+
     public setMaxFontHeight(height: number) {
         this.maxFontHeight = height
         this.update();
     }
 
-    //\% block="set $this(textSprite) icon $icon=screen_image_picker"
-    //\% group="Menu"
-    //\% weight=46
+
     public setIcon(icon: Image) {
         this.icon = icon
         this.update()
     }
 
-    //\% block="set text $this(textSprite) $text"
-    //\% group="Menu"
-    //\% weight=47
+
     public setText(text: string) {
         this.text = text || ""
         this.update()
     }
 
-    //\% block="set $this(textSprite) border $width $color || and padding $padding"
-    //\% width.defl=1
-    //\% color.defl=6
-    //\% color.shadow="colorindexpicker"
-    //\% group="Menu"
-    //\% weight=48
+
     public setBorder(width: number, color: number, padding: number = 0) {
         this.borderWidth = Math.max(width, 0);
         this.borderColor = color;
@@ -96,12 +84,7 @@ class TitleSprite extends Sprite {
         this.update()
     }
 
-    //\% block="set $this(textSprite) outline $width $color"
-    //\% width.defl=1
-    //\% color.defl=6
-    //\% color.shadow="colorindexpicker"
-    //\% group="Menu"
-    //\% weight=49
+
     public setOutline(width: number, color: number) {
         this.outlineWidth = Math.max(width, 0);
         this.outlineColor = color;
@@ -155,22 +138,13 @@ namespace Ercade {
 
 
 
-    //\% block="text sprite $text || as $fg on $bg"
-    //\% blockId="titlesprite_create"
-    //\% blockSetVariable="textSprite"
-    //\% expandableArgumentMode="toggle"
-    //\% bg.defl=0
-    //\% bg.shadow="colorindexpicker"
-    //\% fg.defl=1
-    //\% fg.shadow="colorindexpicker"
-    //\% group="Menu"
-    //\% weight=100
+
     function create(
         text: string,
         bg: number = 0,
         fg: number = 1,
     ): TitleSprite {
-        //const sprite = new TitleSprite(text, bg, fg, 8, 0, 0, 0, 0, 0);
+
         myTitle = new TitleSprite(text, bg, fg, 8, 0, 0, 0, 0, 0);
         game.currentScene().physicsEngine.addSprite(myTitle);
         myTitle.setPosition(myTitle.positionX, myTitle.positionY)
