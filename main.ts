@@ -62,12 +62,12 @@ class TitleSprite extends Sprite {
         this.update()
     }
 
-    //% block="set $this(textSprite) text $text"
+    //% block="set text $text"
     //% group="Menu"
     //% weight=47
     public setText(text: string) {
-        this.text = text || ""
-        this.update()
+        myTitle.text = text || ""
+        myTitle.update()
     }
 
     //% block="set $this(textSprite) border $width $color || and padding $padding"
@@ -105,13 +105,15 @@ class TitleSprite extends Sprite {
 
 let checkpointX: number
 let checkpointY: number
-let myTitle: Sprite
+let myTitle: TitleSprite
 
 
 
 namespace Ercade {
 
-    // TODO: downscale and upscale icons?
+        //% weight=400 blockGap=8
+    //% group="Menu"
+    //% color=#000000
     export function renderScaledImage(source: Image, destination: Image, x: number, y: number, downScalePowerOfTwo: number = 0) {
         const scale = downScalePowerOfTwo;
         const tile = source
@@ -123,7 +125,9 @@ namespace Ercade {
             }
         }
     }
-
+    //% weight=400 blockGap=8
+    //% group="Menu"
+    //% color=#000000
     export function getFontForTextAndHeight(text: string, maxHeight: number): image.Font {
         const baseFont = image.getFontForText(text)
         const hasUnicode = baseFont.charHeight === 12  // this is a hack
@@ -154,11 +158,14 @@ namespace Ercade {
         bg: number = 0,
         fg: number = 1,
     ): TitleSprite {
-        const sprite = new TitleSprite(text, bg, fg, 8, 0, 0, 0, 0, 0);
-        game.currentScene().physicsEngine.addSprite(sprite);
-        return sprite;
+        //const sprite = new TitleSprite(text, bg, fg, 8, 0, 0, 0, 0, 0);
+        myTitle = new TitleSprite(text, bg, fg, 8, 0, 0, 0, 0, 0);
+        game.currentScene().physicsEngine.addSprite(myTitle);
+        return myTitle;
     }
-
+    //% weight=400 blockGap=8
+    //% group="Menu"
+    //% color=#000000
     export function outlineOtherColor(img: Image, targetColor: number, outlineWidth: number, outlineColor: number) {
         let toOutlineX: number[] = [];
         let toOutlineY: number[] = [];
@@ -196,7 +203,6 @@ namespace Ercade {
     //% group="Menu"
     //% color=#000000
     export function Set_Title_To_(title: string){
-        //title = title
         create(title)
     }
     //% blockId=menu block="Menu $onoff=toggleOnOff"
