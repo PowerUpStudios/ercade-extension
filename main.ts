@@ -1,3 +1,10 @@
+
+
+let checkpointX: number
+let checkpointY: number
+let myTitle: TitleSprite
+
+
 namespace SpriteKind {
     //% isKind
     export const SpriteText = SpriteKind.create();
@@ -46,25 +53,25 @@ class TitleSprite extends Sprite {
         this.setImage(img)        
     }
 
-    //% block="set $this(textSprite) max font height $height"
-    //% group="Menu"
-    //% weight=50
+    //\% block="set $this(textSprite) max font height $height"
+    //\% group="Menu"
+    //\% weight=50
     public setMaxFontHeight(height: number) {
         this.maxFontHeight = height
         this.update();
     }
 
-    //% block="set $this(textSprite) icon $icon=screen_image_picker"
-    //% group="Menu"
-    //% weight=46
+    //\% block="set $this(textSprite) icon $icon=screen_image_picker"
+    //\% group="Menu"
+    //\% weight=46
     public setIcon(icon: Image) {
         this.icon = icon
         this.update()
     }
 
-    //% block="set text $text"
-    //% group="Menu"
-    //% weight=47
+    //\% block="set text $this(textSprite) $text"
+    //\% group="Menu"
+    //\% weight=47
     public setText(text: string) {
         this.text = text || ""
         this.update()
@@ -98,20 +105,19 @@ class TitleSprite extends Sprite {
 
 
 
- //% blockId=ercade block="Ercade Extension"
+ //% blockId=ercade block="Ercade"
  //% color="#000000" 
  //% groups='["Menu", "Game"]'
  //% weight=100 color=#000000 icon="\uf1ec"
+ //% blockGap=8
 
-let checkpointX: number
-let checkpointY: number
-let myTitle: TitleSprite
+
 
 
 
 namespace Ercade {
 
-        //% weight=400 blockGap=8
+    //% weight=400 blockGap=8
     //% group="Menu"
     //% color=#000000
     export function renderScaledImage(source: Image, destination: Image, x: number, y: number, downScalePowerOfTwo: number = 0) {
@@ -205,6 +211,30 @@ namespace Ercade {
     export function Set_Title_To_(title: string){
         create(title)
     }
+    //% blockId=changeTitle block="Change Title To %title"
+    //% weight=400 blockGap=8
+    //% group="Menu"
+    //% color=#000000
+    export function change_title(title: string) {
+        myTitle.setText(title)
+    }
+
+    //% blockId=changeFontHeight block="set max font height $height
+    //% weight=400 blockGap=8
+    //% group="Menu"
+    //% color=#000000
+    export function change_font_size(height: number) {
+        myTitle.setMaxFontHeight(height)
+    }
+
+    //% blockId=changeFontHeight block="set icon $icon=screen_image_picker"
+    //% weight=400 blockGap=8
+    //% group="Menu"
+    //% color=#000000
+    export function set_icon(icon: Image) {
+        myTitle.setIcon(icon)
+    }
+
     //% blockId=menu block="Menu $onoff=toggleOnOff"
     //% weight=400 blockGap=8
     //% group="Menu"
