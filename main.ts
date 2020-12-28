@@ -108,7 +108,7 @@ class TitleSprite extends Sprite {
  //% blockId=ercade block="Ercade"
  //% color="#000000" 
  //% groups='["Menu", "Game"]'
- //% weight=100 color=#000000 icon="\uf1ec"
+ //% weight=100 color=#000000 icon="\uf187"
  //% blockGap=8
 
 
@@ -219,7 +219,7 @@ namespace Ercade {
         myTitle.setText(title)
     }
 
-    //% blockId=changeFontHeight block="set max font height $height
+    //% blockId=changeFontHeight block="set max font height $height"
     //% weight=400 blockGap=8
     //% group="Menu"
     //% color=#000000
