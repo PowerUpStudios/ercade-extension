@@ -231,7 +231,7 @@ namespace Ercade {
     }
 
 
-    //% block="set title border $width $color || and padding $padding"
+    //% block="Set Title Border $width $color || And Padding $padding"
     //% width.defl=1
     //% color.defl=6
     //% color.shadow="colorindexpicker"
@@ -241,7 +241,7 @@ namespace Ercade {
         myTitle.setBorder(width, color, padding)
     }
 
-    //% block="set title outline $width $color"
+    //% block="Set Title Outline $width $color"
     //% width.defl=1
     //% color.defl=6
     //% color.shadow="colorindexpicker"
