@@ -298,11 +298,12 @@ checkpointY = y
 export function Teleport_Sprite(sprite: Sprite){
 sprite.setPosition(checkpointX, checkpointY)
 
-    //% blockId=addPage block="Add Page %pageName Type %pageType"
+
+}
+    //% blockId=addPage block="Add Page %pageName Type $pageType=Type"
     //% weight=400 blockGap=8
     //% group="Game"
     //% color=#000000
-}
 export function Add_Page_(pageName: string, pageType: string){
 
 
