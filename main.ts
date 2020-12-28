@@ -66,8 +66,8 @@ class TitleSprite extends Sprite {
     //% group="Menu"
     //% weight=47
     public setText(text: string) {
-        myTitle.text = text || ""
-        myTitle.update()
+        this.text = text || ""
+        this.update()
     }
 
     //% block="set $this(textSprite) border $width $color || and padding $padding"
