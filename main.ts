@@ -3,6 +3,7 @@
 let checkpointX: number
 let checkpointY: number
 let myTitle: TitleSprite
+let _myTitle: TitleSprite
 
 
 namespace SpriteKind {
@@ -25,10 +26,14 @@ class TitleSprite extends Sprite {
         public outlineWidth: number,
         public outlineColor: number,
         public icon: Image = null,
+        public positionX: number = 0,
+        public positionY: number = 0,
     ) {
         super(image.create(0,0));
         this.setKind(SpriteKind.SpriteText);
         this.setFlag(SpriteFlag.Ghost, true);
+
+        //super(this.setPosition(positionX, positionY));
         this.update()
     }
 
@@ -50,7 +55,8 @@ class TitleSprite extends Sprite {
         img.print(this.text, iconWidth + borderAndPadding, textHeightOffset, this.fg, font);
         if (this.outlineWidth > 0)
             Ercade.outlineOtherColor(img, this.fg, this.outlineWidth, this.outlineColor)
-        this.setImage(img)        
+        this.setImage(img) 
+               
     }
 
     //\% block="set $this(textSprite) max font height $height"
@@ -77,12 +83,12 @@ class TitleSprite extends Sprite {
         this.update()
     }
 
-    //% block="set $this(textSprite) border $width $color || and padding $padding"
-    //% width.defl=1
-    //% color.defl=6
-    //% color.shadow="colorindexpicker"
-    //% group="Menu"
-    //% weight=48
+    //\% block="set $this(textSprite) border $width $color || and padding $padding"
+    //\% width.defl=1
+    //\% color.defl=6
+    //\% color.shadow="colorindexpicker"
+    //\% group="Menu"
+    //\% weight=48
     public setBorder(width: number, color: number, padding: number = 0) {
         this.borderWidth = Math.max(width, 0);
         this.borderColor = color;
@@ -90,12 +96,12 @@ class TitleSprite extends Sprite {
         this.update()
     }
 
-    //% block="set $this(textSprite) outline $width $color"
-    //% width.defl=1
-    //% color.defl=6
-    //% color.shadow="colorindexpicker"
-    //% group="Menu"
-    //% weight=49
+    //\% block="set $this(textSprite) outline $width $color"
+    //\% width.defl=1
+    //\% color.defl=6
+    //\% color.shadow="colorindexpicker"
+    //\% group="Menu"
+    //\% weight=49
     public setOutline(width: number, color: number) {
         this.outlineWidth = Math.max(width, 0);
         this.outlineColor = color;
@@ -167,8 +173,20 @@ namespace Ercade {
         //const sprite = new TitleSprite(text, bg, fg, 8, 0, 0, 0, 0, 0);
         myTitle = new TitleSprite(text, bg, fg, 8, 0, 0, 0, 0, 0);
         game.currentScene().physicsEngine.addSprite(myTitle);
+        myTitle.setPosition(myTitle.positionX, myTitle.positionY)
         return myTitle;
     }
+
+    function restore(titleSprite: TitleSprite
+
+    ): TitleSprite {
+        myTitle = new TitleSprite(titleSprite.text, titleSprite.bg, titleSprite.fg, titleSprite.maxFontHeight, titleSprite.borderWidth, titleSprite.borderColor, titleSprite.padding, titleSprite.outlineWidth, titleSprite.outlineColor, titleSprite.icon, myTitle.positionX, myTitle.positionY);
+        game.currentScene().physicsEngine.addSprite(myTitle);
+        myTitle.setPosition(myTitle.positionX, myTitle.positionY)
+        return myTitle;
+    }
+
+
     //% weight=400 blockGap=8
     //% group="Menu"
     //% color=#000000
@@ -209,17 +227,20 @@ namespace Ercade {
     //% group="Menu"
     //% color=#000000
     export function Set_Title_To_(title: string){
+        if(myTitle != null) {
+            myTitle.destroy()
+        }
         create(title)
     }
-    //% blockId=changeTitle block="Change Title To %title"
-    //% weight=400 blockGap=8
-    //% group="Menu"
-    //% color=#000000
-    export function change_title(title: string) {
+    //\% blockId=changeTitle block="Change Title To %title"
+    //\% weight=400 blockGap=8
+    //\% group="Menu"
+    //\% color=#000000
+    function change_title(title: string) {
         myTitle.setText(title)
     }
 
-    //% blockId=changeFontHeight block="set max font height $height"
+    //% blockId=changeFontHeight block="Set Max Font Height $height"
     //% weight=400 blockGap=8
     //% group="Menu"
     //% color=#000000
@@ -227,7 +248,7 @@ namespace Ercade {
         myTitle.setMaxFontHeight(height)
     }
 
-    //% blockId=changeFontHeight block="set icon $icon=screen_image_picker"
+    //% blockId=changeIcon block="Set Icon $icon=screen_image_picker"
     //% weight=400 blockGap=8
     //% group="Menu"
     //% color=#000000
@@ -235,20 +256,54 @@ namespace Ercade {
         myTitle.setIcon(icon)
     }
 
+
+    //% block="set title border $width $color || and padding $padding"
+    //% width.defl=1
+    //% color.defl=6
+    //% color.shadow="colorindexpicker"
+    //% group="Menu"
+    //% weight=48
+    export function set_border(width: number, color: number, padding: number = 0) {
+        myTitle.setBorder(width, color, padding)
+    }
+
+    //% block="set title outline $width $color"
+    //% width.defl=1
+    //% color.defl=6
+    //% color.shadow="colorindexpicker"
+    //% group="Menu"
+    //% weight=49
+    export function set_outline(width: number, color: number) {
+        myTitle.setOutline(width, color)
+    }
+
+
+
+
+    //% blockId=setPos block="Set Position $x $y"
+    //% weight=400 blockGap=8
+    //% group="Menu"
+    //% color=#000000
+    export function set_position(x: number, y: number) {
+        myTitle.positionX = x 
+        myTitle.positionY = y
+        myTitle.setPosition(myTitle.positionX, myTitle.positionY)
+    }
+
+
     //% blockId=menu block="Menu $onoff=toggleOnOff"
     //% weight=400 blockGap=8
     //% group="Menu"
     //% color=#000000
     export function Menu_(onoff: boolean){
-    if (onoff = true){
-
-
-
-    }
-    else{
-    myTitle.destroy()
-
-
+    if (onoff == false){
+        _myTitle = myTitle
+        myTitle.destroy()
+    
+    } else {
+        if(_myTitle != null) {
+            restore(_myTitle)
+        }
     }
     
 } 
