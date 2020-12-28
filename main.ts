@@ -5,6 +5,62 @@ let checkpointY: number
 let myTitle: TitleSprite
 let _myTitle: TitleSprite
 
+//enum Types {
+    
+//    RANGE_150 = 0x00,
+//    RANGE_300 = 0x10,
+ //   RANGE_500 = 0x20
+//};
+
+
+namespace types {
+    /**
+     * Gets the "kind" of type
+     */
+    //% shim=KIND_GET
+    //% enumName="Types"
+    //% enumMemberName="types"    
+    //% blockId=typekind block="$_kind"
+    //% kindNamespace=TypesKind kindMemberName=kind kindPromptHint="e.g. Coin, Fireball, Asteroid..."
+    export function _Type(_kind: number): number {
+        return _kind;
+    }
+
+    /**
+     * Gets the my type
+     */
+    //% blockHidden=1 shim=ENUM_GET deprecated=true
+    //% enumName="Types"
+    //% enumMemberName="types"     
+    //% blockId=mytype block="$_kind" enumInitialMembers="Type1,Type2,Type3,Type4"
+    //% enumName=TypesKindLegacy enumMemberName=kind enumPromptHint="e.g. Coin, Fireball, Asteroid..."
+    export function _nType(_kind: number): number {
+        return _kind;
+    }
+}
+
+namespace TypesKind {
+    let nextKindType: number;
+
+    export function create() {
+        if (nextKindType === undefined) nextKindType = 1000;
+        return nextKindType++;
+    }
+
+    //% isKind
+    export const Type1 = create();
+
+    //% isKind
+    export const Type2 = 1;
+
+    //% isKind
+    export const Type3 = create();
+
+    //% isKind
+    export const Type4 = create();
+}
+
+
 
 namespace SpriteKind {
     //% isKind
@@ -300,11 +356,20 @@ sprite.setPosition(checkpointX, checkpointY)
 
 
 }
-    //% blockId=addPage block="Add Page %pageName Type $pageType=Type"
+
+
+    //% group="Create"
+    //% blockId=spritescreate block="sprite %img=screen_image_picker of kind %kind=spritekind"
+    //% expandableArgumentMode=toggle
+    //% blockSetVariable=mySprite
+    //% weight=100 help=sprites/create
+    export function ctreate(img: Image, kind?: number): void {}
+
+    //% blockId=addPage block="Add Page %pageName Type %pageType=typekind"
     //% weight=400 blockGap=8
     //% group="Game"
     //% color=#000000
-export function Add_Page_(pageName: string, pageType: string){
+export function Add_Page_(pageName: string, pageType?: number){
 
 
 
