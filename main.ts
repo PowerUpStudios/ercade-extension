@@ -5,18 +5,14 @@ let checkpointY: number
 let myTitle: TitleSprite
 let _myTitle: TitleSprite
 
-//enum Types {
-    
-//    RANGE_150 = 0x00,
-//    RANGE_300 = 0x10,
- //   RANGE_500 = 0x20
-//};
+
 
 
 namespace types {
     /**
      * Gets the "kind" of type
      */
+    //% color=#000000
     //% shim=KIND_GET
     //% enumName="Types"
     //% enumMemberName="types"    
@@ -29,6 +25,7 @@ namespace types {
     /**
      * Gets the my type
      */
+    //% color=#000000
     //% blockHidden=1 shim=ENUM_GET deprecated=true
     //% enumName="Types"
     //% enumMemberName="types"     
@@ -41,23 +38,23 @@ namespace types {
 
 namespace TypesKind {
     let nextKindType: number;
-
+     //% color=#000000
     export function create() {
         if (nextKindType === undefined) nextKindType = 1000;
         return nextKindType++;
     }
 
     //% isKind
-    export const Type1 = create();
+    export const Menu = create();
 
     //% isKind
-    export const Type2 = 1;
+    export const Credits = 1;
 
     //% isKind
-    export const Type3 = create();
+    export const Options = create();
 
     //% isKind
-    export const Type4 = create();
+    export const Game = create();
 }
 
 
