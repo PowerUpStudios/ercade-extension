@@ -4,14 +4,15 @@ let checkpointX: number
 let checkpointY: number
 let myTitle: TitleSprite
 let _myTitle: TitleSprite
+let pages: string
 
 
 
-
-namespace types {
+namespace Types {
     /**
      * Gets the "kind" of type
      */
+    //% blockHidden=1
     //% color=#000000
     //% shim=KIND_GET
     //% enumName="Types"
@@ -26,7 +27,7 @@ namespace types {
      * Gets the my type
      */
     //% color=#000000
-    //% blockHidden=1 shim=ENUM_GET deprecated=true
+    //% blockHidden=true shim=ENUM_GET deprecated=true
     //% enumName="Types"
     //% enumMemberName="types"     
     //% blockId=mytype block="$_kind" enumInitialMembers="Type1,Type2,Type3,Type4"
@@ -189,9 +190,6 @@ namespace Ercade {
     }
 
 
-
-
-
     function create(
         text: string,
         bg: number = 0,
@@ -207,7 +205,7 @@ namespace Ercade {
     function restore(titleSprite: TitleSprite
 
     ): TitleSprite {
-        myTitle = new TitleSprite(titleSprite.text, titleSprite.bg, titleSprite.fg, titleSprite.maxFontHeight, titleSprite.borderWidth, titleSprite.borderColor, titleSprite.padding, titleSprite.outlineWidth, titleSprite.outlineColor, titleSprite.icon, myTitle.positionX, myTitle.positionY);
+        myTitle = new TitleSprite(titleSprite.text, titleSprite.bg, titleSprite.fg, titleSprite.maxFontHeight, titleSprite.borderWidth, titleSprite.borderColor, titleSprite.padding, titleSprite.outlineWidth, titleSprite.outlineColor, titleSprite.icon, titleSprite.positionX, titleSprite.positionY);
         game.currentScene().physicsEngine.addSprite(myTitle);
         myTitle.setPosition(myTitle.positionX, myTitle.positionY)
         return myTitle;
@@ -249,22 +247,15 @@ namespace Ercade {
 
 
     
-    //% blockId=setTitle block="Set Title To %title"
+    //% blockId=setTitleOfType block="Set Title To %title Of Type %type"
     //% weight=400 blockGap=8
     //% group="Menu"
     //% color=#000000
-    export function Set_Title_To_(title: string){
+    export function Set_Title_To_Title_Of_Type_(title: string, type_: string){
         if(myTitle != null) {
             myTitle.destroy()
         }
         create(title)
-    }
-    //\% blockId=changeTitle block="Change Title To %title"
-    //\% weight=400 blockGap=8
-    //\% group="Menu"
-    //\% color=#000000
-    function change_title(title: string) {
-        myTitle.setText(title)
     }
 
     //% blockId=changeFontHeight block="Set Max Font Height $height"
@@ -307,22 +298,25 @@ namespace Ercade {
 
 
 
-    //% blockId=setPos block="Set Position $x $y"
+    //% blockId=setTitlePos block="Set Title Position To $x $y"
     //% weight=400 blockGap=8
     //% group="Menu"
     //% color=#000000
-    export function set_position(x: number, y: number) {
+    export function set_title_position(x: number, y: number) {
         myTitle.positionX = x 
         myTitle.positionY = y
         myTitle.setPosition(myTitle.positionX, myTitle.positionY)
     }
 
 
-    //% blockId=menu block="Menu $onoff=toggleOnOff"
+    //% blockId=menu block="Activate Page %pageName $onoff=toggleOnOff"
     //% weight=400 blockGap=8
     //% group="Menu"
     //% color=#000000
-    export function Menu_(onoff: boolean){
+    export function Activate_Page(pageName: string ,onoff: boolean){
+      if (pages.includes(pageName)) {
+	
+  
     if (onoff == false){
         _myTitle = myTitle
         myTitle.destroy()
@@ -331,6 +325,7 @@ namespace Ercade {
         if(_myTitle != null) {
             restore(_myTitle)
         }
+    }
     }
     
 } 
@@ -355,20 +350,13 @@ sprite.setPosition(checkpointX, checkpointY)
 }
 
 
-    //% group="Create"
-    //% blockId=spritescreate block="sprite %img=screen_image_picker of kind %kind=spritekind"
-    //% expandableArgumentMode=toggle
-    //% blockSetVariable=mySprite
-    //% weight=100 help=sprites/create
-    export function ctreate(img: Image, kind?: number): void {}
-
+    
     //% blockId=addPage block="Add Page %pageName Type %pageType=typekind"
     //% weight=400 blockGap=8
     //% group="Game"
     //% color=#000000
 export function Add_Page_(pageName: string, pageType?: number){
-
-
+pages = "" + pages + pageName 
 
 
 }
