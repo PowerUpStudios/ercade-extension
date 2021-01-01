@@ -5,7 +5,7 @@ let checkpointY: number
 let myTitle: TitleSprite
 let _myTitle: TitleSprite
 let pages: string
-let pagesManager:  string[];
+let pagesManager:  [string];
 let titlePage: string 
 
 
@@ -145,6 +145,17 @@ class TitleSprite extends Sprite {
         this.outlineColor = color;
         this.update();
     }
+
+    //% blockId=setdvalue block="setdvalue %z1 Page : %z2"
+    //% weight=400 blockGap=8
+    //% group="Menu"
+    //% color=#000000
+    public setdvalue(z1: number, z2: number):boolean {
+        return true;
+    }
+
+
+
 }
 
 
