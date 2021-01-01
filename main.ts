@@ -5,7 +5,8 @@ let checkpointY: number
 let myTitle: TitleSprite
 let _myTitle: TitleSprite
 let pages: string
-
+let pagesManager:  string[];
+let titlePage: string 
 
 
 namespace Types {
@@ -247,15 +248,16 @@ namespace Ercade {
 
 
     
-    //% blockId=setTitleOfType block="Set Title To %title Of Type %type"
+    //% blockId=setTitleOfType block="Set Title To %title Page : %titlepage"
     //% weight=400 blockGap=8
     //% group="Menu"
     //% color=#000000
-    export function Set_Title_To_Title_Of_Type_(title: string, type_: string){
+    export function Set_Title_To_Title_Page(title: string, titlepage: string){
         if(myTitle != null) {
             myTitle.destroy()
         }
         create(title)
+        titlePage = titlepage
     }
 
     //% blockId=changeFontHeight block="Set Max Font Height $height"
@@ -315,16 +317,22 @@ namespace Ercade {
     //% color=#000000
     export function Activate_Page(pageName: string ,onoff: boolean){
       if (pages.includes(pageName)) {
-	
   
     if (onoff == false){
-        _myTitle = myTitle
+    if (pagesManager.indexOf(pageName) > 0) {
+        if (titlePage = pageName){
+            _myTitle = myTitle
         myTitle.destroy()
-    
+        }	
+    }
+        
     } else {
-        if(_myTitle != null) {
+            if (pagesManager.indexOf(pageName) > 0) {	
+                        if(_myTitle != null) {
             restore(_myTitle)
         }
+    }
+
     }
     }
     
@@ -353,11 +361,10 @@ sprite.setPosition(checkpointX, checkpointY)
     
     //% blockId=addPage block="Add Page %pageName Type %pageType=typekind"
     //% weight=400 blockGap=8
-    //% group="Game"
+    //% group="Menu"
     //% color=#000000
-export function Add_Page_(pageName: string, pageType?: number){
-pages = "" + pages + pageName 
-
+export function Add_Page_(pageName: string, pageType?: number){ 
+pagesManager.push(pageName + ' ' + "false") 
 
 }
 
@@ -365,5 +372,4 @@ pages = "" + pages + pageName
 
 
  } 
-
 
